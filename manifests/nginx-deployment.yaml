@@ -1,0 +1,23 @@
+# nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-nginx
+  labels:
+    app: example-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-nginx
+  template:
+    metadata:
+      labels:
+        app: example-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:stable
+        ports:
+        - containerPort: 80
+        # Optionally add a simple index to show which domain was reached
